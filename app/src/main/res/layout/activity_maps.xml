@@ -12,17 +12,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/resimg"
-            android:src="@drawable/common_signin_btn_text_normal_dark"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/iconflood"
-            android:layout_toStartOf="@+id/iconflood" />
-
         <TextView
             android:hint="ResName"
             android:layout_width="wrap_content"
@@ -103,16 +92,6 @@
             android:layout_toLeftOf="@+id/resLatMap"
             android:layout_toStartOf="@+id/resLatMap" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/resimg3"
-            android:src="@drawable/common_signin_btn_text_pressed_dark"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/imageView"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_above="@+id/resDescMap" />
-
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,21 +102,19 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:id="@+id/resimg2"
-            android:src="@drawable/common_signin_btn_text_pressed_dark"
-            android:layout_toLeftOf="@+id/imageView3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/resTimeMap"
-            android:layout_above="@+id/imageView" />
-
-        <ImageView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView4"
             android:src="@android:drawable/ic_menu_recent_history"
-            android:layout_below="@+id/iconflood"
-            android:layout_toRightOf="@+id/resimg" />
+            android:layout_above="@+id/imageView3"
+            android:layout_alignLeft="@+id/imageView3" />
+
+        <ListView
+            android:layout_width="100dp"
+            android:layout_height="300dp"
+            android:id="@+id/listView2"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/iconflood"
+            android:layout_alignParentTop="true" />
 
     </RelativeLayout>
 
