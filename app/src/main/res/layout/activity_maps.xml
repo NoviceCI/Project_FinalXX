@@ -11,18 +11,18 @@
         android:id="@+id/detail"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:background="@drawable/abc_popup_background_mtrl_mult">
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="250dp"
+            android:layout_height="100dp"
             android:id="@+id/resimg"
             android:src="@drawable/common_signin_btn_text_normal_dark"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_toLeftOf="@+id/iconflood"
-            android:layout_toStartOf="@+id/iconflood" />
+            android:layout_alignLeft="@+id/resImage2"
+            android:layout_alignStart="@+id/resImage2"
+            android:layout_alignParentTop="true" />
 
         <TextView
             android:hint="ResName"
@@ -30,19 +30,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/resName"
 
-            android:layout_alignBottom="@+id/iconflood"
-            android:layout_alignLeft="@+id/resDesc"
-            android:layout_alignStart="@+id/resDesc" />
+            android:layout_alignTop="@+id/resimg"
+            android:layout_toRightOf="@+id/imageView3"
+            android:layout_toEndOf="@+id/imageView3"
+            android:layout_marginTop="28dp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/iconflood"
             android:src="@android:drawable/ic_dialog_map"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/resDesc"
-            android:layout_toStartOf="@+id/resDesc"
-            android:layout_marginTop="37dp" />
+            android:layout_toLeftOf="@+id/resName"
+            android:layout_toStartOf="@+id/resName"
+            android:layout_alignBottom="@+id/resName" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,16 +51,17 @@
 
             android:hint="ResDes"
             android:layout_alignBottom="@+id/imageView4"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignRight="@+id/resName"
+            android:layout_alignEnd="@+id/resName" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/resLat"
             android:hint="ResLat"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignLeft="@+id/resDesc"
-            android:layout_alignStart="@+id/resDesc" />
+            android:layout_below="@+id/imageView3"
+            android:layout_alignLeft="@+id/resPhase"
+            android:layout_alignStart="@+id/resPhase" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -85,7 +86,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resPhase"
             android:hint="Phase"
-            android:layout_alignBottom="@+id/imageView3"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
         <ImageView
@@ -93,9 +94,9 @@
             android:layout_height="50dp"
             android:id="@+id/imageView"
             android:src="@android:drawable/ic_menu_mylocation"
-            android:layout_below="@+id/imageView3"
-            android:layout_toLeftOf="@+id/resLat"
-            android:layout_toStartOf="@+id/resLat" />
+            android:layout_below="@+id/resPhase"
+            android:layout_toRightOf="@+id/resimg"
+            android:layout_toEndOf="@+id/resimg" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -106,7 +107,7 @@
             android:layout_alignLeft="@+id/imageView"
             android:layout_alignStart="@+id/imageView"
             android:layout_alignBottom="@+id/resTime"
-            android:layout_alignTop="@+id/resTime" />
+            android:layout_below="@+id/iconflood" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -122,9 +123,41 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView4"
             android:src="@android:drawable/ic_menu_sort_by_size"
-            android:layout_below="@+id/resLat"
+            android:layout_below="@+id/imageView"
             android:layout_toLeftOf="@+id/resDesc"
             android:layout_toStartOf="@+id/resDesc" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/resImage2"
+            android:src="@drawable/common_signin_btn_text_pressed_dark"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/iconflood"
+            android:layout_toStartOf="@+id/iconflood"
+            android:layout_above="@+id/resImage3"
+            android:layout_alignTop="@+id/resTime" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/resImage3"
+            android:src="@drawable/common_signin_btn_text_pressed_dark"
+            android:layout_below="@+id/resLat"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/imageView"
+            android:layout_toStartOf="@+id/imageView" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnBack"
+            android:src="@android:drawable/ic_menu_revert"
+            android:layout_alignTop="@+id/resDesc"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
