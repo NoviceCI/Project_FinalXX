@@ -14,7 +14,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
@@ -27,7 +27,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 public class ConnectServer extends AsyncTask<String, Integer, String>{
-    private HttpPost httppost;
+    private HttpGet httpGet;
     private HttpClient httpclient;
     private List<NameValuePair> nameValuePairs;
     private DialogConnect dialogConnect;
@@ -38,7 +38,7 @@ public class ConnectServer extends AsyncTask<String, Integer, String>{
 
         //สร้างส่วนประกอบที่จำเป็นในการเชื่อมกับ Server
         this.httpclient = new DefaultHttpClient();
-        this.httppost = new HttpPost(URL);
+        this.httpGet = new HttpGet(URL);
         this.nameValuePairs = new ArrayList<NameValuePair>();
 
         //สร้าง Dialog ตอนเชื่อมต่อกับ Server
@@ -66,8 +66,8 @@ public class ConnectServer extends AsyncTask<String, Integer, String>{
         //เริ่มการเชื่อมต่กับ Server
         try {
             //ทำการส่งตัวแปรต่างๆ ในรูปแบบของ UTF-8
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,HTTP.UTF_8));
-            HttpResponse response = httpclient.execute(httppost);
+
+            HttpResponse response = httpclient.execute(httpGet);
             HttpEntity entity = response.getEntity();
             is = entity.getContent();
 
@@ -125,17 +125,17 @@ public class ConnectServer extends AsyncTask<String, Integer, String>{
 
                 //ถ้าดึงข้อมูลจาก database มีปัญหาจะแสดง error
 
-                ((MainActivity)context).setList(list);
+                ((ListRes)context).setList(list);
 
                 //ถ้าขณะแปลงข้อมูล JSON มีปัญหาจะมาทำงานส่วนนี้
             } catch (JSONException e) {
                 Log.e("ConnectServer", "Error parsing data " + e.toString());
-                ((MainActivity)context).errorConnectToServer();
+                ((ListRes)context).errorConnectToServer();
             }
 
             //ถ้าเชื่อมต่อกับ server ไม่ได้จะทำงานต่อไปนี้
         }else{
-            ((MainActivity)context).cannotConnectToServer();
+            ((ListRes)context).cannotConnectToServer();
         }
 
         dialogConnect.dismiss();

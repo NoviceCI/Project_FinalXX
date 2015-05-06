@@ -4,36 +4,46 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class ListRes extends ActionBarActivity {
+
+    private ListView listView;
+    private ArrayList<String> list;
+    private ArrayAdapter<String> arrayAdapter;
+    private ConnectServer connectServer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_res);
+
+            listView = (ListView) findViewById(R.id.listView);
+
+            connectServer = new ConnectServer(this,"http://qazx.servehttp.com:99/service/api/restaurant/res/format/json");
+
+
+            connectServer.execute();
     }
 
+     public void setList(ArrayList<String> list){
+         this.list = list;
+         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,this.list);
+         listView.setAdapter(arrayAdapter);
+     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_list_res, menu);
-        return true;
+
+    public void cannotConnectToServer() {
+        Toast.makeText(this, "ไม่สามารถเชื่อมต่อกับ Server", Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void errorConnectToServer() {
+        Toast.makeText(this, "เกิดขอผิดพลาดในการดึงข้อมูล", Toast.LENGTH_LONG).show();
     }
 }
