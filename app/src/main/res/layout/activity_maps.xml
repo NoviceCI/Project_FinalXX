@@ -111,7 +111,7 @@
         <ListView
             android:layout_width="100dp"
             android:layout_height="300dp"
-            android:id="@+id/listView2"
+            android:id="@+id/reslistview"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/iconflood"
             android:layout_alignParentTop="true" />
