@@ -5,7 +5,7 @@
     android:nestedScrollingEnabled="false"
     android:transitionGroup="false"
     android:touchscreenBlocksFocus="false"
-    android:id="@+id/">
+    android:id="@+id/item">
 
     <ImageView
         android:layout_width="120dp"
