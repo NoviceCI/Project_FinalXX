@@ -43,7 +43,8 @@
             android:layout_toRightOf="@+id/iconf"
             android:layout_toEndOf="@+id/iconf"
             android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp" />
+            android:layout_marginStart="22dp"
+            android:textStyle="bold"/>
 
         <ImageView
             android:layout_width="40dp"
