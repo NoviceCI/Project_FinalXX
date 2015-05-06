@@ -8,16 +8,15 @@
     android:background="#ffffefca">
 
     <ImageView
-        android:layout_width="100dip"
+        android:layout_width="fill_parent"
         android:layout_height="100dip"
         android:id="@+id/resImg"
         android:src="@mipmap/ic_launcher"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/resName"
-        android:layout_toStartOf="@+id/resName"
-        android:layout_marginRight="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="22dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <RatingBar
         android:layout_width="wrap_content"
