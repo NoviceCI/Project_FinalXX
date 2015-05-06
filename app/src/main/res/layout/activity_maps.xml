@@ -5,11 +5,136 @@
     android:layout_height="match_parent"
     >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/detail"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-    <fragment  android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="250dp"
+            android:id="@+id/resimg"
+            android:src="@drawable/common_signin_btn_text_normal_dark"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/iconflood"
+            android:layout_toStartOf="@+id/iconflood" />
+
+        <TextView
+            android:hint="ResName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resName"
+
+            android:layout_alignBottom="@+id/iconflood"
+            android:layout_alignLeft="@+id/resDesc"
+            android:layout_alignStart="@+id/resDesc" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iconflood"
+            android:src="@android:drawable/ic_dialog_map"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/resDesc"
+            android:layout_toStartOf="@+id/resDesc"
+            android:layout_marginTop="37dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resDesc"
+
+            android:hint="ResDes"
+            android:layout_alignBottom="@+id/imageView4"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resLat"
+            android:hint="ResLat"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignLeft="@+id/resDesc"
+            android:layout_alignStart="@+id/resDesc" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resLang"
+            android:hint="ResLang"
+            android:layout_alignTop="@+id/resLat"
+            android:layout_toRightOf="@+id/resLat"
+            android:layout_toEndOf="@+id/resLat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resTime"
+            android:hint="Time"
+            android:layout_above="@+id/imageView3"
+            android:layout_alignLeft="@+id/resName"
+            android:layout_alignStart="@+id/resName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resPhase"
+            android:hint="Phase"
+            android:layout_alignBottom="@+id/imageView3"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/imageView"
+            android:src="@android:drawable/ic_menu_mylocation"
+            android:layout_below="@+id/imageView3"
+            android:layout_toLeftOf="@+id/resLat"
+            android:layout_toStartOf="@+id/resLat" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/imageView2"
+            android:layout_toLeftOf="@+id/resLat"
+            android:src="@android:drawable/ic_menu_recent_history"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_alignBottom="@+id/resTime"
+            android:layout_alignTop="@+id/resTime" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/imageView3"
+            android:src="@android:drawable/ic_menu_myplaces"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/resLat"
+            android:layout_toStartOf="@+id/resLat" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:layout_below="@+id/resLat"
+            android:layout_toLeftOf="@+id/resDesc"
+            android:layout_toStartOf="@+id/resDesc" />
+
+    </RelativeLayout>
+
+    <fragment
+        android:layout_below="@+id/detail"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" android:id="@+id/map"
         tools:context="com.xj.ij.projectxfinal.MapsActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
+
 
 </RelativeLayout>
 
