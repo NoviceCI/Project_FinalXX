@@ -46,7 +46,7 @@ public class ListRes extends ActionBarActivity {
             connectServer.execute();
     }
 
-     public void setList(List<Restautant_Model> list1){
+    public void setList(List<Restautant_Model> list1){
 
 
          this.list = list1;
@@ -99,12 +99,16 @@ public class ListRes extends ActionBarActivity {
                 resName.setText(restautant_model.getRestaurant_name());
                 resDesc.setText(restautant_model.getRestaurant_des());
 
+                convertView.setTag(restautant_model);
+
+                convertView.setOnClickListener(new ListClick(context));
             }
+
+
 
             return convertView;
         }
     }
-
 
 
     public void cannotConnectToServer() {
