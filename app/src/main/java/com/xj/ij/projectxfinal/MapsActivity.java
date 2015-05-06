@@ -14,6 +14,7 @@ import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,11 +43,20 @@ public class MapsActivity extends FragmentActivity {
     private Document mDocNav;
     private Marker mCurr;
 
+    private TextView resName , time, paese, lat ,lang , des ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        resName = (TextView) findViewById(R.id.resNameMap);
+        time = (TextView) findViewById(R.id.resTimeMap);
+        paese = (TextView) findViewById(R.id.resPhaseMap);
+        lat = (TextView) findViewById(R.id.resLatMap);
+        lang = (TextView) findViewById(R.id.resLangMap);
+        des = (TextView) findViewById(R.id.resDescMap);
 
 
         targetLocation = new LatLng(
@@ -75,6 +85,11 @@ public class MapsActivity extends FragmentActivity {
                 mDocNav = doc;
                 mMap.addPolyline(gd.getPolyline(mDocNav,3,Color.YELLOW));
 
+                time.setText(gd.getTotalDurationText(mDocNav));
+                paese.setText(gd.getTotalDistanceText(mDocNav));
+
+
+
             }
         });
 
@@ -89,7 +104,7 @@ public class MapsActivity extends FragmentActivity {
 
     public void updateMyLocatino(){
 
-      gdNav.request(startLocation,currentLocation,GoogleDirection.MODE_DRIVING);
+      gdNav.request(currentLocation,targetLocation,GoogleDirection.MODE_DRIVING);
       mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 10));
       Toast.makeText(this,"LocationChange"+currentLocation.toString(),Toast.LENGTH_LONG).show();
     }
@@ -145,6 +160,9 @@ public class MapsActivity extends FragmentActivity {
         mCurr = mMap.addMarker(curr);
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, 10));
+
+
+
 
     }
 
