@@ -16,7 +16,42 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitXY"
+        android:background="@drawable/abc_tab_indicator_mtrl_alpha" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resName"
+        android:hint="Name"
+        android:textColor="#ff030103"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_below="@+id/resImg"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="15dp" />
+        android:layout_above="@+id/r_rating"
+        android:layout_centerHorizontal="true"
+        android:textSize="14dp"
+        android:textColor="#f00e0117"
+        android:background="#ffb8b484"
+        android:fontFamily="Arial"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resDesc"
+        android:hint="Desc"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/resName"
+        android:layout_alignLeft="@+id/resName"
+        android:layout_alignStart="@+id/resName"
+        android:textSize="15dp"
+        android:fontFamily="Arial"
+        />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -36,36 +71,8 @@
         android:nestedScrollingEnabled="false"
         android:progressTint="#fffffa01"
         android:numStars="4"
-        android:layout_marginRight="53dp"
-        android:layout_marginEnd="53dp"
-        android:layout_below="@+id/resDesc"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/resName"
-        android:hint="Name"
-        android:background="#ffb5c19f"
-        android:textColor="#ff030103"
-        android:layout_alignTop="@+id/resImg"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
-        android:layout_above="@+id/r_rating"
-        android:layout_centerHorizontal="true"
-        android:textSize="14dp"
-        android:textColor="#f00e0117"
-        android:background="#ffb8b484" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/resDesc"
-        android:hint="Desc"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/resName"
-        android:layout_alignLeft="@+id/resName"
-        android:layout_alignStart="@+id/resName" />
 
 </RelativeLayout>
