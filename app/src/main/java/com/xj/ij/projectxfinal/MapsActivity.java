@@ -5,6 +5,8 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,7 +15,14 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +37,7 @@ import com.xj.ij.projectxfinal.lib3rd.GoogleDirection;
 
 import org.w3c.dom.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity {
@@ -42,9 +52,9 @@ public class MapsActivity extends FragmentActivity {
     private Document mDoc;
     private Document mDocNav;
     private Marker mCurr;
-
+    private List<String> stringList ;
     private TextView resName , time, paese, lat ,lang , des ;
-
+    private ListView showImg ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +66,15 @@ public class MapsActivity extends FragmentActivity {
         paese = (TextView) findViewById(R.id.resPhaseMap);
         lat = (TextView) findViewById(R.id.resLatMap);
         lang = (TextView) findViewById(R.id.resLangMap);
-        des = (TextView) findViewById(R.id.resDescMap);
+//        des = (TextView) findViewById(R.id.resDescMap);
+        showImg = (ListView) findViewById(R.id.reslistview);
 
+
+        ConnectServerGetImges connectServerGetImges =
+                new ConnectServerGetImges(this,"http://qazx.servehttp.com:99/service/api/file/images/format/json/id/"+
+                        getIntent().getStringExtra("id"));
+
+        connectServerGetImges.execute();
 
         targetLocation = new LatLng(
                 Double.parseDouble(getIntent().getStringExtra("lat")),
@@ -102,6 +119,83 @@ public class MapsActivity extends FragmentActivity {
 
     }
 
+    public void setList(List<String> stringList){
+
+        this.stringList = stringList;
+
+
+        List<Bitmap> bitmaps = new ArrayList<>();
+
+
+        for (String s : this.stringList){
+
+            byte[] bytes = Base64.decode(s, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+
+            bitmaps.add(bitmap);
+
+        }
+
+
+
+        showImg.setAdapter(new ImgAdapter(this,bitmaps));
+
+
+    }
+
+    private class ImgAdapter extends BaseAdapter{
+
+        List<Bitmap> bitmaps ;
+        Context context;
+
+        public  ImgAdapter(Context context ,List<Bitmap> bitmaps){
+
+            this.bitmaps = bitmaps;
+            this.context = context;
+        }
+
+
+        @Override
+        public int getCount() {
+            return this.bitmaps.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            Bitmap bitmap = bitmaps.get(position);
+
+            ImageView imageView = new ImageView(context);
+
+            imageView.setImageBitmap(bitmap);
+
+            imageView.setPadding(0,0,0,0);
+
+
+
+            return imageView;
+        }
+    }
+
+
+    public void cannotConnectToServer() {
+        Toast.makeText(this, "ไม่สามารถเชื่อมต่อกับ Server", Toast.LENGTH_LONG).show();
+    }
+
+    public void errorConnectToServer() {
+        Toast.makeText(this, "เกิดขอผิดพลาดในการดึงข้อมูล", Toast.LENGTH_LONG).show();
+    }
+
     public void updateMyLocatino(){
 
       gdNav.request(currentLocation,targetLocation,GoogleDirection.MODE_DRIVING);
@@ -139,10 +233,6 @@ public class MapsActivity extends FragmentActivity {
                 }else{
                     gpsTracker.showSettingsAlert();
                 }
-
-
-
-
 
 
                 setUpMap();
