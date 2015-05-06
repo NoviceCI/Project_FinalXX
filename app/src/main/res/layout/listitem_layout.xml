@@ -33,17 +33,16 @@
         android:layout_height="wrap_content"
         android:text="Explanation :"
         android:id="@+id/r_explanation"
-        android:layout_below="@+id/resImg"
+        android:layout_below="@+id/r_rating"
         android:layout_alignLeft="@+id/r_rating"
-        android:layout_alignStart="@+id/r_rating"
-        android:layout_marginTop="21dp" />
+        android:layout_alignStart="@+id/r_rating" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rating :"
         android:id="@+id/r_rating"
-        android:layout_alignBottom="@+id/resImg"
+        android:layout_below="@+id/r_name"
         android:layout_alignLeft="@+id/r_name"
         android:layout_alignStart="@+id/r_name" />
 
