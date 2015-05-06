@@ -1,4 +1,4 @@
-package com.xj.ij.projectxfinal;
+package com.xj.ij.projectxfinal.model;
 
 /**
  * Created by Taiy on 6/5/2558.

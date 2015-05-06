@@ -13,11 +13,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +23,8 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.xj.ij.projectxfinal.model.Restautant_Model;
 
 public class ConnectServer extends AsyncTask<String, Integer, String>{
     private HttpGet httpGet;

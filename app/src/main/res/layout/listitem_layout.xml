@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/resName"
+        android:id="@+id/resNameMap"
         android:hint="Name"
         android:textColor="#ff030103"
         android:layout_marginLeft="22dp"
@@ -43,12 +43,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/resDesc"
+        android:id="@+id/resDescMap"
         android:hint="Desc"
         android:layout_marginTop="21dp"
-        android:layout_below="@+id/resName"
-        android:layout_alignLeft="@+id/resName"
-        android:layout_alignStart="@+id/resName"
+        android:layout_below="@+id/resNameMap"
+        android:layout_alignLeft="@+id/resNameMap"
+        android:layout_alignStart="@+id/resNameMap"
         android:textSize="15dp"
         android:fontFamily="Arial"
         />
