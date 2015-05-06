@@ -97,6 +97,8 @@ public class ConnectServer extends AsyncTask<String, Integer, String>{
         //list ที่ใช้เก็บข้อมูล
         ArrayList<String> list = new ArrayList<String>();
 
+        List<Restautant_Model> restautant_models = new ArrayList<Restautant_Model>();
+
         //ถ้า result เป็น null คือ ไม่สามารถเชื่อมต่อกับ server ได้
         //ถ้าเชื่อมต่กับ server ได้ จะทำงานต่อไปนี้
         if(result != null){
@@ -114,18 +116,36 @@ public class ConnectServer extends AsyncTask<String, Integer, String>{
 
                 //วน Loop เอาค่าใส่ใน List
                 for(int i=0;i<size;i++){
-                    String data = "ID : "+ jResult.getJSONObject(i).getString("restaurant_id") + "\n"
+
+                    Restautant_Model restautant_model = new Restautant_Model();
+
+                    restautant_model.setRestaurant_id(jResult.getJSONObject(i).getString("restaurant_id"));
+                    restautant_model.setRestaurant_name(jResult.getJSONObject(i).getString("restaurant_name"));
+                    restautant_model.setRestaurant_des(jResult.getJSONObject(i).getString("restaurant_des"));
+                    restautant_model.setRestaurant_lat(jResult.getJSONObject(i).getString("restaurant_lat"));
+                    restautant_model.setRestaurant_lang(jResult.getJSONObject(i).getString("restaurant_lang"));
+                    restautant_model.setRestaurant_rating(jResult.getJSONObject(i).getString("restaurant_rating"));
+                    restautant_model.setImage(jResult.getJSONObject(i).getString("images"));
+
+
+                    /*String data = "ID : "+ jResult.getJSONObject(i).getString("restaurant_id") + "\n"
                             + "Name : " + jResult.getJSONObject(i).getString("restaurant_name") + "\n"
                             + "Lat : " + jResult.getJSONObject(i).getString("restaurant_lat")+ "\n"
                             + "Lang : " + jResult.getJSONObject(i).getString("restaurant_lang")+ "\n"
                             + "Des : " + jResult.getJSONObject(i).getString("restaurant_des")+ "\n"
                             + "Rating : " + jResult.getJSONObject(i).getString("restaurant_rating");
-                    list.add(data);
+
+
+                    list.add(data);*/
+
+                    restautant_models.add(restautant_model);
+
+
                 }
 
                 //ถ้าดึงข้อมูลจาก database มีปัญหาจะแสดง error
 
-                ((ListRes)context).setList(list);
+                ((ListRes)context).setList(restautant_models);
 
                 //ถ้าขณะแปลงข้อมูล JSON มีปัญหาจะมาทำงานส่วนนี้
             } catch (JSONException e) {
