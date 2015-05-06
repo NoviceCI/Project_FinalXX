@@ -10,15 +10,77 @@
         android:layout_height="250dp"
         android:id="@+id/detail"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <ListView
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/reslistview"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:id="@+id/iconf"
+            android:src="@drawable/restaurant_blue_2_256"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/reslistview"
+            android:layout_toEndOf="@+id/reslistview" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resNameMap"
+            android:hint="ResName"
+            android:layout_alignBottom="@+id/iconf"
+            android:layout_toRightOf="@+id/iconf"
+            android:layout_toEndOf="@+id/iconf"
+            android:layout_marginLeft="22dp"
+            android:layout_marginStart="22dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/jo"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/iconf"
+            android:layout_alignStart="@+id/iconf" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resPhaseMap"
+            android:hint="PhaseMap"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignLeft="@+id/resNameMap"
+            android:layout_alignStart="@+id/resNameMap" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageView2"
+            android:src="@drawable/realtime"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/resNameMap"
+            android:layout_toStartOf="@+id/resNameMap"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resTimeMap"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignLeft="@+id/resPhaseMap"
+            android:layout_alignStart="@+id/resPhaseMap"
+            android:hint="Time" />
 
     </RelativeLayout>
 

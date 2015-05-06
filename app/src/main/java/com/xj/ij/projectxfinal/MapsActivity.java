@@ -19,7 +19,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -62,10 +61,10 @@ public class MapsActivity extends FragmentActivity {
         setContentView(R.layout.activity_maps);
 
         resName = (TextView) findViewById(R.id.resNameMap);
-        time = (TextView) findViewById(R.id.resTimeMap);
+        time = (TextView) findViewById(R.id.resPhaseMap);
         paese = (TextView) findViewById(R.id.resPhaseMap);
-        lat = (TextView) findViewById(R.id.resLatMap);
-        lang = (TextView) findViewById(R.id.resLangMap);
+//        lat = (TextView) findViewById(R.id.resLatMap);
+//        lang = (TextView) findViewById(R.id.resLangMap);
 //        des = (TextView) findViewById(R.id.resDescMap);
         showImg = (ListView) findViewById(R.id.reslistview);
 
