@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:longClickable="false"
+    android:nestedScrollingEnabled="false"
+    android:transitionGroup="false"
+    android:touchscreenBlocksFocus="false"
+    android:id="@+id/">
 
     <ImageView
         android:layout_width="120dp"
@@ -10,4 +15,56 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Name :"
+        android:id="@+id/r_name"
+        android:layout_marginTop="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explanation :"
+        android:id="@+id/r_explanation"
+        android:layout_below="@+id/r_name"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating :"
+        android:id="@+id/r_rating"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <RatingBar
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:id="@+id/ratingBar"
+        android:longClickable="false"
+        android:stepSize="1"
+        android:progressBackgroundTint="#fffcff66"
+        android:secondaryProgressTint="#fffcff42"
+        android:rating="3"
+        android:backgroundTint="#fffbff07"
+        android:clickable="false"
+        android:indeterminateOnly="false"
+        android:maxHeight="50dp"
+        android:mirrorForRtl="false"
+        android:nestedScrollingEnabled="false"
+        android:progressTint="#fffffa01"
+        android:numStars="4"
+        android:layout_toRightOf="@+id/r_rating"
+        android:layout_toEndOf="@+id/r_rating"
+        android:layout_alignBottom="@+id/r_rating" />
+
 </RelativeLayout>
