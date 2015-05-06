@@ -5,49 +5,22 @@
     android:nestedScrollingEnabled="false"
     android:transitionGroup="false"
     android:touchscreenBlocksFocus="false"
-    >
+    android:background="#ffffefca">
 
     <ImageView
-        android:layout_width="60dip"
-        android:layout_height="60dip"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
         android:id="@+id/resImg"
         android:src="@mipmap/ic_launcher"
-        android:layout_alignTop="@+id/r_name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="31dp"
-        android:layout_marginStart="31dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Restaurant Name :"
-        android:id="@+id/r_name"
-        android:layout_marginTop="30dp"
-        android:singleLine="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Explanation :"
-        android:id="@+id/r_explanation"
-        android:layout_below="@+id/r_rating"
-        android:layout_alignLeft="@+id/r_rating"
-        android:layout_alignStart="@+id/r_rating" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rating :"
-        android:id="@+id/r_rating"
-        android:layout_below="@+id/r_name"
-        android:layout_alignLeft="@+id/r_name"
-        android:layout_alignStart="@+id/r_name" />
+        android:layout_toLeftOf="@+id/resName"
+        android:layout_toStartOf="@+id/resName"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="22dp" />
 
     <RatingBar
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:id="@+id/ratingBar"
         android:longClickable="false"
@@ -64,30 +37,36 @@
         android:nestedScrollingEnabled="false"
         android:progressTint="#fffffa01"
         android:numStars="4"
-        android:layout_alignLeft="@+id/resDesc"
-        android:layout_alignStart="@+id/resDesc"
-        android:layout_alignTop="@+id/r_rating"
-        android:layout_alignRight="@+id/resName"
-        android:layout_alignEnd="@+id/resName" />
+        android:layout_marginRight="53dp"
+        android:layout_marginEnd="53dp"
+        android:layout_below="@+id/resDesc"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
         android:id="@+id/resName"
-        android:layout_alignTop="@+id/r_name"
-        android:layout_alignLeft="@+id/resDesc"
-        android:layout_alignStart="@+id/resDesc"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp" />
+        android:hint="Name"
+        android:background="#ffb5c19f"
+        android:textColor="#ff030103"
+        android:layout_alignTop="@+id/resImg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp" />
+        android:layout_above="@+id/r_rating"
+        android:layout_centerHorizontal="true"
+        android:textSize="14dp"
+        android:textColor="#f00e0117"
+        android:background="#ffb8b484" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
         android:id="@+id/resDesc"
-        android:layout_alignTop="@+id/r_explanation"
-        android:layout_toRightOf="@+id/r_name"
-        android:layout_toEndOf="@+id/r_name" />
+        android:hint="Desc"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/resName"
+        android:layout_alignLeft="@+id/resName"
+        android:layout_alignStart="@+id/resName" />
 
 </RelativeLayout>
