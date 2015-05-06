@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -18,21 +19,35 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.xj.ij.projectxfinal.lib3rd.GoogleDirection;
+
+import org.w3c.dom.Document;
+
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private LocationManager locationManager;
-    private LatLng currentLocation  ;
+    private LatLng startLocation  ;
     private LatLng targetLocation ;
-
+    private LatLng currentLocation ;
+    private GoogleDirection gd;
+    private GoogleDirection gdNav ;
+    private Document mDoc;
+    private Document mDocNav;
+    private Marker mCurr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+
 
         targetLocation = new LatLng(
                 Double.parseDouble(getIntent().getStringExtra("lat")),
@@ -41,6 +56,42 @@ public class MapsActivity extends FragmentActivity {
         setUpMapIfNeeded();
 
 
+        gd = new GoogleDirection(this);
+        gdNav = new GoogleDirection(this);
+
+        gd.setOnDirectionResponseListener(new GoogleDirection.OnDirectionResponseListener() {
+            @Override
+            public void onResponse(String status, Document doc, GoogleDirection gd) {
+                mDoc = doc;
+                mMap.addPolyline(gd.getPolyline(mDoc,3, Color.RED));
+
+
+            }
+        });
+
+        gdNav.setOnDirectionResponseListener(new GoogleDirection.OnDirectionResponseListener() {
+            @Override
+            public void onResponse(String status, Document doc, GoogleDirection gd) {
+                mDocNav = doc;
+                mMap.addPolyline(gd.getPolyline(mDocNav,3,Color.YELLOW));
+
+            }
+        });
+
+
+
+
+
+        gd.request(startLocation,targetLocation,GoogleDirection.MODE_DRIVING);
+
+
+    }
+
+    public void updateMyLocatino(){
+
+      gdNav.request(startLocation,currentLocation,GoogleDirection.MODE_DRIVING);
+      mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 10));
+      Toast.makeText(this,"LocationChange"+currentLocation.toString(),Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -62,6 +113,7 @@ public class MapsActivity extends FragmentActivity {
                 // check if GPS enabled
                 if(gpsTracker.canGetLocation()){
 
+                    startLocation = new LatLng(gpsTracker.getLatitude(),gpsTracker.getLongitude());
                     currentLocation = new LatLng(gpsTracker.getLatitude(),gpsTracker.getLongitude());
 
 
@@ -84,10 +136,15 @@ public class MapsActivity extends FragmentActivity {
     }
 
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(currentLocation).title("start"));
+        mMap.addMarker(new MarkerOptions().position(startLocation).title("start"));
         mMap.addMarker(new MarkerOptions().position(targetLocation).title("target"));
 
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(targetLocation,10));
+        MarkerOptions curr = new MarkerOptions().position(startLocation).icon(BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+
+        mCurr = mMap.addMarker(curr);
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, 10));
 
     }
 
@@ -96,7 +153,8 @@ public class MapsActivity extends FragmentActivity {
 
         @Override
         public void onLocationChanged(Location location) {
-            //currentLocation = new LatLng(location.getLatitude(),location.getLongitude());
+            currentLocation = new LatLng(location.getLatitude(),location.getLongitude());
+            updateMyLocatino();
         }
 
         @Override
