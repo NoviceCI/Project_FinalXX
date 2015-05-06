@@ -8,44 +8,43 @@
     >
 
     <ImageView
-        android:layout_width="60dip"
-        android:layout_height="60dip"
-        android:id="@+id/resImg"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
         android:src="@mipmap/ic_launcher"
-        android:layout_alignTop="@+id/r_name"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="31dp"
-        android:layout_marginStart="31dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Restaurant Name :"
         android:id="@+id/r_name"
-        android:layout_marginTop="30dp"
-        android:singleLine="true"
+        android:layout_marginTop="37dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:singleLine="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Explanation :"
         android:id="@+id/r_explanation"
-        android:layout_below="@+id/resImg"
-        android:layout_alignLeft="@+id/r_rating"
-        android:layout_alignStart="@+id/r_rating"
-        android:layout_marginTop="21dp" />
+        android:layout_below="@+id/r_name"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rating :"
         android:id="@+id/r_rating"
-        android:layout_alignBottom="@+id/resImg"
-        android:layout_alignLeft="@+id/r_name"
-        android:layout_alignStart="@+id/r_name" />
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
 
     <RatingBar
         android:layout_width="fill_parent"
@@ -57,7 +56,6 @@
         android:secondaryProgressTint="#fffcff42"
         android:rating="3"
         android:backgroundTint="#fffbff07"
-        style="?android:attr/ratingBarStyleSmall"
         android:clickable="false"
         android:indeterminateOnly="false"
         android:maxHeight="50dp"
@@ -65,30 +63,8 @@
         android:nestedScrollingEnabled="false"
         android:progressTint="#fffffa01"
         android:numStars="4"
-        android:layout_alignLeft="@+id/resDesc"
-        android:layout_alignStart="@+id/resDesc"
-        android:layout_alignTop="@+id/r_rating"
-        android:layout_alignRight="@+id/resName"
-        android:layout_alignEnd="@+id/resName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/resName"
-        android:layout_alignTop="@+id/r_name"
-        android:layout_alignLeft="@+id/resDesc"
-        android:layout_alignStart="@+id/resDesc"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/resDesc"
-        android:layout_alignTop="@+id/r_explanation"
-        android:layout_toRightOf="@+id/r_name"
-        android:layout_toEndOf="@+id/r_name" />
+        android:layout_toRightOf="@+id/r_rating"
+        android:layout_toEndOf="@+id/r_rating"
+        android:layout_alignBottom="@+id/r_rating" />
 
 </RelativeLayout>
