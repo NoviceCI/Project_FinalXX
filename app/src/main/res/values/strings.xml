@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ProjectXFinal</string>
+    <string name="app_name">ProjectXFinal Restaurant LBS Systems</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_list_res">ListRes</string>
+    <string name="title_activity_list_res">Restaurant</string>
     <string name="title_activity_maps">Map</string>
 
 </resources>

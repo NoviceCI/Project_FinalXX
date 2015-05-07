@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,12 +62,14 @@ public class MapsActivity extends FragmentActivity {
         setContentView(R.layout.activity_maps);
 
         resName = (TextView) findViewById(R.id.resNameMap);
-        time = (TextView) findViewById(R.id.resPhaseMap);
+        time = (TextView) findViewById(R.id.resTimeMap);
         paese = (TextView) findViewById(R.id.resPhaseMap);
 //        lat = (TextView) findViewById(R.id.resLatMap);
 //        lang = (TextView) findViewById(R.id.resLangMap);
 //        des = (TextView) findViewById(R.id.resDescMap);
         showImg = (ListView) findViewById(R.id.reslistview);
+
+        resName.setText(getIntent().getStringExtra("name"));
 
 
         ConnectServerGetImges connectServerGetImges =
@@ -178,6 +181,10 @@ public class MapsActivity extends FragmentActivity {
 
             imageView.setImageBitmap(bitmap);
 
+            /*LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(300,200);
+            layoutParams.setMargins(1,1,1,1);
+            imageView.setLayoutParams(layoutParams);
+            */
             imageView.setPadding(0,0,0,0);
 
 
@@ -199,7 +206,7 @@ public class MapsActivity extends FragmentActivity {
 
       gdNav.request(currentLocation,targetLocation,GoogleDirection.MODE_DRIVING);
       mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 10));
-      Toast.makeText(this,"LocationChange"+currentLocation.toString(),Toast.LENGTH_LONG).show();
+      //Toast.makeText(this,"LocationChange"+currentLocation.toString(),Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -240,13 +247,15 @@ public class MapsActivity extends FragmentActivity {
     }
 
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(startLocation).title("start"));
-        mMap.addMarker(new MarkerOptions().position(targetLocation).title("target"));
+        mMap.addMarker(new MarkerOptions().position(startLocation).title("จุดเริ่มต้น")).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(targetLocation).title(getIntent().getStringExtra("name"))).showInfoWindow();
 
         MarkerOptions curr = new MarkerOptions().position(startLocation).icon(BitmapDescriptorFactory
-                .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+                .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)).title("จุดที่คุณอยู่");
 
         mCurr = mMap.addMarker(curr);
+
+        mCurr.showInfoWindow();
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, 10));
 

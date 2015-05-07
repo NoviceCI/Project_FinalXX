@@ -9,7 +9,7 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="100dip"
+        android:layout_height="120dip"
         android:id="@+id/resImg"
         android:src="@mipmap/ic_launcher"
         android:layout_alignParentTop="true"

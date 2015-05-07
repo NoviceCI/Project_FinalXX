@@ -33,6 +33,8 @@ public class ListClick implements View.OnClickListener {
 
         intent.putExtra("id",String.valueOf(restautant_model.getRestaurant_id()));
 
+        intent.putExtra("name",String.valueOf(restautant_model.getRestaurant_name()));
+
         context.startActivity(intent);
 
     }
